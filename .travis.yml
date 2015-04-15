@@ -85,7 +85,11 @@ install:
       download_extract https://github.com/xsacha/SymbianGCC/releases/download/4.8.3/ndk.tar.bz2 ndk.tar.bz2 &&
       export EPOCROOT=$(pwd)/SDKs/SymbianSR1Qt474/ SBS_GCCE483BIN=$(pwd)/gcc4.8.3_x86-64/bin &&
       cp ffmpeg/symbian/armv6/lib/* $EPOCROOT/epoc32/release/armv5/urel/ &&
-      PATH=$SBS_GCCE483BIN:$(pwd)/tools/sbs/bin:$EPOCROOT/epoc32/tools:$EPOCROOT/bin:$(pwd)/tools/sbs/linux-x86_64-libc2_15/bin:$PATH;
+      PATH=$SBS_GCCE483BIN:$(pwd)/tools/sbs/bin:$EPOCROOT/epoc32/tools:$EPOCROOT/bin:$(pwd)/tools/sbs/linux-x86_64-libc2_15/bin:$PATH &&
+      pushd /home/travis/build/hrydgard/ppsspp/tools/sbs/util &&
+      make -k &&
+      echo "Symbian ready."
+      popd;
     fi
 
 script:
